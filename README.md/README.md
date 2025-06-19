@@ -1,10 +1,19 @@
 # Ethiomart NER Pipeline
 
-This project is part of the KAIM Week 4 challenge from 10 Academy. The goal is to build an Amharic Named Entity Recognition (NER) system that extracts key entities — such as product names, prices, and locations — from messages posted in Ethiopian Telegram-based e-commerce channels.
+## 📌 Project: Ethiomart Amharic NER Pipeline
 
-## 🔍 Project Objective
+This repo implements a data ingestion and NER annotation pipeline for Amharic-language Telegram e-commerce messages.
 
-To transform messy, unstructured Amharic text and images from Telegram posts into structured data to support micro-lending decisions for vendors using EthioMart.
+### ✅ Features
+
+- Multi-channel Telegram scraper using Telethon
+- Cleaned and normalized Amharic message texts
+- CoNLL-formatted manual labeling for NER
+- Ready for model fine-tuning
+
+### 🛠️ Setup Instructions
+
+1. Clone the repo and install dependencies:
 
 ## 📁 Folder Structure
 
