@@ -1,7 +1,0 @@
-telethon
-pandas
-numpy
-transformers
-datasets
-scikit-learn
-matplotlib
