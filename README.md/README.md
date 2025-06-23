@@ -1,65 +1,38 @@
-# 🌍 EthioMart NER Pipeline
+# 🇪🇹 EthioMart NER Pipeline
 
-This repository provides an end-to-end Named Entity Recognition (NER) pipeline for Amharic e-commerce Telegram data, covering:
+This repository contains an end-to-end Named Entity Recognition (NER) pipeline tailored for Amharic e-commerce vendors on Telegram. It automates the entire process — from data scraping and preprocessing, to fine-tuning and deploying an NER model.
 
-- Task 1: Data exploration and visualization
-- Task 2: Data formatting in CoNLL
-- Task 3: Dataset preparation for training
-- ✅ Task 4: Fine-tuning and uploading the NER model to Hugging Face
 
----
+## 📌 Project Overview
 
-## 🔧 Project Structure
+Telegram-based e-commerce is rapidly growing in Ethiopia. However, business data is scattered and unstructured. This project extracts, cleans, and annotates messages from various Telegram vendors, enabling Named Entity Recognition (NER) for better vendor profiling, customer analytics, and loan eligibility modeling.
 
-ethiomart-ner-pipeline/
-│
-├── data/
-│ ├── raw/ # Raw Telegram vendor data (JSON)
-│ ├── cleaned/ # Cleaned CSVs
-│ ├── ethiomart_task2_labeled.conll # Final CoNLL file
-│
-├── notebooks/
-│ ├── task1_data_exploration.ipynb
-│ ├── ner_train_preparation.ipynb # Task 4 training notebook
-│ ├── final_ner_model/ # Saved fine-tuned model
-│
-├── scripts/
-│ ├── scrape_telegram.py
-│ └── preprocess_text.py
-│
-├── README.md
-└── requirements.txt
 
-yaml
-Copy
-Edit
+## 📂 Folder Structure
 
----
+.
+├── data
+│   ├── raw/                   # Unprocessed scraped JSON files
+│   └── cleaned/               # Cleaned CSVs used for analysis
+├── notebooks
+│   ├── task1_data_exploration.ipynb      # Exploratory Data Analysis
+│   ├── ner_train_preparation.ipynb       # CoNLL formatting and prep
+│   └── final_ner_model/                  # Hugging Face link below
+├── scripts
+│   ├── scrape_telegram.py    # Telegram scraping bot
+│   └── preprocess_text.py    # Normalization, cleaning, tokenizing
+├── requirements.txt
+└── README.md
+🧠 Model
+I fine-tuned a xlm-roberta-base model for token classification using a CoNLL-formatted Amharic dataset derived from Telegram messages.
 
-## ✅ Task 4: Fine-Tuning and Uploading the NER Model
+📎 Hugging Face Model
+🔗 Access the model here:
+👉 rufeshe/ethio-ner-model
 
-We trained a token classification model using the `xlm-roberta-base` architecture. The model was trained for 3 epochs with ~0.20 evaluation loss and exported using the `Trainer` API.
+📥 Load the Model
 
-### 🔗 Model on Hugging Face
-
-The trained model has been uploaded to Hugging Face:
-
-👉 **[rufeshe/ethio-ner-model](https://huggingface.co/rufeshe/ethio-ner-model)**
-
-Use it in your Python code:
-
-```python
 from transformers import AutoTokenizer, AutoModelForTokenClassification
 
 model = AutoModelForTokenClassification.from_pretrained("rufeshe/ethio-ner-model")
 tokenizer = AutoTokenizer.from_pretrained("rufeshe/ethio-ner-model")
-📦 Requirements
-Install dependencies:
-
-bash
-Copy
-Edit
-pip install -r requirements.txt
-🧠 Authors
-👤 @rufeshe
-
