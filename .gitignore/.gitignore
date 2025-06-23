@@ -1,0 +1,5 @@
+__pycache__/
+.env
+*.ipynb_checkpoints
+*.DS_Store
+ethiomart_session*
