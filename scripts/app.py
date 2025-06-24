@@ -1,15 +1,23 @@
 import gradio as gr
 from transformers import AutoTokenizer, AutoModelForTokenClassification, pipeline
 
-model = AutoModelForTokenClassification.from_pretrained("rufeshe/ethio-ner-model")
-tokenizer = AutoTokenizer.from_pretrained("rufeshe/ethio-ner-model")
+# Load your model
+model_name = "rufeshe/ethio-ner-model"
+tokenizer = AutoTokenizer.from_pretrained(model_name)
+model = AutoModelForTokenClassification.from_pretrained(model_name)
 
+# Use HuggingFace pipeline
 ner_pipeline = pipeline("ner", model=model, tokenizer=tokenizer, aggregation_strategy="simple")
 
-def predict_entities(text):
-    return ner_pipeline(text)
+def extract_entities(text):
+    ner_results = ner_pipeline(text)
+    return {entity['entity_group']: entity['word'] for entity in ner_results}
 
-gr.Interface(fn=predict_entities, 
-             inputs=gr.Textbox(lines=5, placeholder="Enter Amharic e-commerce message..."), 
-             outputs="json",
-             title="Ethio NER Inference").launch()
+# Create Gradio interface
+demo = gr.Interface(fn=extract_entities,
+                    inputs=gr.Textbox(lines=4, placeholder="Enter Amharic text..."),
+                    outputs="json",
+                    title="Amharic NER Extractor")
+
+if __name__ == "__main__":
+    demo.launch()
