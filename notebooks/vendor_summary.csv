@@ -1,0 +1,4 @@
+vendor,posting_freq,avg_views,avg_price,norm_freq,norm_views,norm_price,lending_score
+Vendor A,2.0,300,3500,1.0,1.0,1.0,20.0
+Vendor B,1.0,250,4200,0.3333333333333333,0.5,0.0,6.666666666666668
+Vendor C,0.5,200,3900,0.0,0.0,0.4285714285714286,1.7142857142857146
